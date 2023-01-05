@@ -7,6 +7,8 @@ const EMAIL_REGEXP = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const PASSWORD_LENGTH = 8;
 
 const LoginForm = () => {
+
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState({
     email: false,
     password: false,
@@ -32,7 +34,7 @@ const LoginForm = () => {
       ...values,
       [fieldName]: value,
     })
-  }, [error.email, error.password, values])
+  }, [error.email, error.password, values, setErrors])
 
   const validateEmail = (email: string) => {
     const isValid = EMAIL_REGEXP.test(email)
@@ -50,7 +52,6 @@ const LoginForm = () => {
       password: values.password,
     }
   }
-  const [loading, setLoading] = useState(false)
 
   const login = (payload: {
     email: string,
