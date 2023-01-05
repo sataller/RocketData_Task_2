@@ -1,13 +1,88 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Default CSS */
+
+
+html, body, #root, .root-child {
+  /* height: 100%; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+body {
+  margin: 0;
+  font-size: 16px;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+input[type=time] {
+  resize: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  outline: none;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  src: local('Montserrat Thin'), url(./assets/fonts/Montserrat-Thin.woff2) format('woff2');
+  font-weight: 100;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  src: local('Montserrat Light'), url(./assets/fonts/Montserrat-Light.woff2) format('woff2');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  src: local('Montserrat Regular'), url(./assets/fonts/Montserrat-Regular.woff2) format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  src: local('Montserrat Medium'), url(./assets/fonts/Montserrat-Medium.woff2) format('woff2');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  src: local('Montserrat SemiBold'), url(./assets/fonts/Montserrat-SemiBold.woff2) format('woff2');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  src: local('Montserrat Bold'), url(./assets/fonts/Montserrat-Bold.woff2) format('woff2');
+  font-weight: 700;
 }
