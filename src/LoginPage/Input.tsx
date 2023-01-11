@@ -46,7 +46,7 @@ const Input = ({
           value={value}
           onChange={onChangeInput}
         />
-        : <InputShimmer loading={loading} />
+        : <InputShimmer loading={loading ? 1 : 0} />
       }
       {error
         && <ErrorMessage>
@@ -68,7 +68,7 @@ const StyledInput = styled.input<{
 `
 
 const InputShimmer = styled.input<{
-  loading?: boolean
+  loading?: 0 | 1
 }>`
   height: 30px;
   border: unset;

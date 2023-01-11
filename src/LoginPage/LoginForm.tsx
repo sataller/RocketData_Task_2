@@ -19,57 +19,40 @@ const LoginForm = () => {
     password: '',
   })
 
-  const setErrors = useCallback((key: string, value: boolean) => {
-    setError({
-      ...error,
-      [key]: value,
-    })
-  }, [error])
-
   const onChange = useCallback((value: string, fieldName: string) => {
     if (error.email || error.password){
-      setErrors(fieldName, false)
+      setError({
+        ...error,
+        [fieldName]: false,
+      })
     }
     setValues({
       ...values,
       [fieldName]: value,
     })
-  }, [error.email, error.password, values, setErrors])
+  }, [values, error])
 
   const validateEmail = (email: string) => {
-    const isValid = EMAIL_REGEXP.test(email)
-    return isValid
+    return EMAIL_REGEXP.test(email)
   }
 
   const validatePassword = (password: string) => {
-    const isError = password.length >= PASSWORD_LENGTH
-    return isError
+    return password.length >= PASSWORD_LENGTH
   }
 
-  const getPayload = () => {
-    return {
-      email: values.email,
-      password: values.password,
-    }
-  }
-
-  const login = (payload: {
-    email: string,
-    password: string,
-  }) => {
+  const login = () => {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-      console.log(payload)
+      console.log(values)
     }, 5000)
   }
 
   const onSubmit = () => {
-    const payload = getPayload();
-    const isEmailValid = validateEmail(payload.email)
-    const isPasswordValid = validatePassword(payload.password)
+    const isEmailValid = validateEmail(values.email)
+    const isPasswordValid = validatePassword(values.password)
     if (isEmailValid && isPasswordValid) {
-      login(payload)
+      login()
     } else {
       setError({
         password: !isPasswordValid,
