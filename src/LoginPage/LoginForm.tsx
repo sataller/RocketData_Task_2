@@ -48,7 +48,9 @@ const LoginForm = () => {
     }, 5000)
   }
 
-  const onSubmit = () => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
     const isEmailValid = validateEmail(values.email)
     const isPasswordValid = validatePassword(values.password)
     if (isEmailValid && isPasswordValid) {
@@ -62,7 +64,7 @@ const LoginForm = () => {
   }
 
   return (
-    <LoginFormWrapper>
+    <LoginFormWrapper onSubmit={(e) => onSubmit(e)}>
       <Header>
         <Title>Login</Title>
       </Header>
@@ -91,7 +93,7 @@ const LoginForm = () => {
         />
       </InputWrapper>
       <ButtonWrapper>
-        <Button onClick={onSubmit} disabled={loading}>
+        <Button type='submit' disabled={loading}>
           {loading ? '. . . Loading' : 'Login'}
         </Button>
       </ButtonWrapper>
@@ -103,7 +105,7 @@ const Header = styled.div`
   margin: 30px;
 `
 
-const LoginFormWrapper = styled.div`
+const LoginFormWrapper = styled.form`
   width: 320px;
   display: flex;
   padding: 20px;
@@ -150,6 +152,9 @@ const Button = styled.button<{
   justify-content: center;
   ${props => props.disabled && 'opacity: 0.15'};
   cursor: ${props => !props.disabled && 'pointer'};
+  &:focus{
+    border: 2px solid black;
+  }
  ${props => !props.disabled
     && css` :active {
     padding: 6px;

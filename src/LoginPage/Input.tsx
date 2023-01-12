@@ -31,7 +31,7 @@ const Input = ({
   return (
     <InputWrapper>
       {label
-        && <Label>
+        && <Label htmlFor={name}>
           {label}:
           {required
             && <Required>*</Required>
@@ -40,6 +40,7 @@ const Input = ({
       }
       {!loading
         ? <StyledInput
+          id={name}
           name={name}
           type={type}
           error={error}
@@ -66,6 +67,9 @@ const StyledInput = styled.input<{
   border-radius: 10px;
   border: 1px solid ${props => props.error ? '#ff0000' : '#bdb8b8'};
   ${DefaultFontsStyles}
+  &:focus{
+    border: 2px solid;
+  }
 `
 
 const InputShimmer = styled.input<{
