@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import Input from './Input';
 import styled, { css } from 'styled-components';
-import { DefaultFontsStyles } from '../DefaultStyles';
+import { DefaultFontsStyles, shimmerStyles } from '../DefaultStyles';
 
 const EMAIL_REGEXP = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const PASSWORD_LENGTH = 8;
@@ -20,7 +20,7 @@ const LoginForm = () => {
   })
 
   const onChange = useCallback((value: string, fieldName: string) => {
-    if (error.email || error.password){
+    if (error.email || error.password) {
       setError({
         ...error,
         [fieldName]: false,
@@ -64,8 +64,7 @@ const LoginForm = () => {
   return (
     <LoginFormWrapper>
       <Header>
-        <Title>Вход</Title>
-        <P>Для существующих пользователей</P>
+        <Title>Login</Title>
       </Header>
       <InputWrapper>
         <Input
@@ -77,29 +76,31 @@ const LoginForm = () => {
           error={error.email}
           onChange={onChange}
           value={values.email}
-          errorText={'Укажите корректный email адрес'}
+          errorText={'Enter a valid email address'}
         />
         <Input
           required={true}
-          label={"Пароль"}
+          label={"Password"}
           type={"password"}
           name={"password"}
           loading={loading}
           onChange={onChange}
           error={error.password}
           value={values.password}
-          errorText={'Укажите валидный пароль (минимум 8 символов)'}
+          errorText={'Enter a valid password (minimum 8 characters)'}
         />
       </InputWrapper>
-      <Button onClick={onSubmit} disabled={loading}>
-        {loading ? '. . . Загрузка' : 'Войти в систему'}
-      </Button>
+      <ButtonWrapper>
+        <Button onClick={onSubmit} disabled={loading}>
+          {loading ? '. . . Loading' : 'Login'}
+        </Button>
+      </ButtonWrapper>
     </LoginFormWrapper>
   )
 }
 
 const Header = styled.div`
-  margin-bottom: 20px;
+  margin: 30px;
 `
 
 const LoginFormWrapper = styled.div`
@@ -121,30 +122,32 @@ const Title = styled.div`
   font-size: 24px;
 `
 
-export const P = styled.p`
-  ${DefaultFontsStyles}
-  text-align: center;
-  font-size: 14px;
-`
-
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
+`
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
 `
 
 const Button = styled.button<{
   disabled?: boolean
 }>`
   ${DefaultFontsStyles}
-  width: 50%;
-  height: 30px;
+  width: 70%;
+  height: 40px;
   display: flex;
   padding: 10px;
   border: unset;
   font-size: 12px;
   color: #FFFFFF;
+  border-radius: 10px;
   align-items: center;
   background: #2e00ff;
+  justify-content: center;
   ${props => props.disabled && 'opacity: 0.15'};
   cursor: ${props => !props.disabled && 'pointer'};
  ${props => !props.disabled

@@ -60,9 +60,10 @@ const Input = ({
 const StyledInput = styled.input<{
   error?: boolean
 }>`
-  height: 30px;
+  height: 40px;
   padding: 10px;
   margin: 5px 0;
+  border-radius: 10px;
   border: 1px solid ${props => props.error ? '#ff0000' : '#bdb8b8'};
   ${DefaultFontsStyles}
 `
@@ -70,17 +71,18 @@ const StyledInput = styled.input<{
 const InputShimmer = styled.input<{
   loading?: 0 | 1
 }>`
-  height: 30px;
+  height: 40px;
   border: unset;
   padding: 10px;
   margin: 10px 0;
+  border-radius: 10px;
   ${props => props.loading && shimmerStyles};
   
 `
 
 const InputWrapper = styled.div`
   display: flex;
-  min-height: 80px;
+  min-height: 90px;
   flex-direction: column;
 `
 
