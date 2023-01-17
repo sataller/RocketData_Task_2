@@ -1,3 +1,9 @@
+# Test task description. 
+##Login form app. 
+Login must be a valid email address
+Password - at least eight characters.
+Calling the api by clicking on the button must be locked.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
